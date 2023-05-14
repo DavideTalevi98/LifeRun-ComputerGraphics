@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="myStyle.css">
+  </link>
+  <title>LifeRun</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <canvas width="1200" height="590" id="text"></canvas>
+    <canvas width="1200" height="590" id="myCanvas"></canvas>
+  </div>
+
+  <div id="uiContainer">
+
+    <div id="bottoni">
+      <div id="visuale">
+        <h2>Opzioni della camera</h2>
+      </div>
+      <input type="button" id="button1" value="Dietro"
+        onclick="cambiaCamera=false;cameraLiberabis = false;cameraIso=false; cameraLibera=false; camera_posteriore=true">
+      <input type="button" id="button2" value="Avanti"
+        onclick="cambiaCamera=true;cameraLiberabis = false;cameraIso=false;cameraLibera=false;camera_posteriore=true">
+      <input type="button" id="button3" value="Isometrica" onclick="cameraIso=true;cameraLiberabis = false;camera_posteriore=true">
+    </div>
+
+    <div id="shadowOpt">
+      <div>
+        <h2>Ombre</h2>
+        <input type="radio" id="shadowRadio" name="shadow" value="4" onclick="texture_enable=true" checked>
+        <label for="shadow4">on</label>
+      </div>
+      <div>
+        <input type="radio" id="shadowRadio" name="shadow" value="5" onclick="texture_enable=false">
+        <label for="shadow5">off</label>
+      </div>
+    </div>
+
+    <h2> Posizione Luce</h2>
+    <div id="LightX"></div>
+    <div id="LightY"></div>
+    <div id="LightZ"></div>
+
+  </div>
+  <div id="instruction">
+    <div class="row">
+      <div class="column side">
+        <h2 id="intestazione">Storia</h2>
+        <p style="text-align:left;">
+          In fondo cosa è importante nella vita, si corre sempre dietro a qualcosa, chi dietro ai follower chi dietro ai soldi, ma alla fine tutto finisce, quindi meglio godersi il viaggio.
+          Per questo do la mia visione della mia vita collezionando viaggi prima che la morte ti prenda con la sua falce!!
+        </p>
+        <p>PS: Occhio alle pattuglie e ai trattori parcheggiati male!</p>
+      </div>
+      
+      <div class="column middle">
+        <h4 style="color: #8b0000">Istruzioni e feature:</h5>
+        <ul class="lista">
+          <li>
+            Scappa dal trattore arrabbiato utilizzando i tasti W A S D per muoverti
+          </li>
+          <li>
+            Utilizzando il pannello a destra è possibile cambiare la visuale
+          </li>
+        </ul>
+        <h4 style="color: #8b0000">
+          La visuale può inoltre essere gestita con il mouse:
+        </h4>
+        <ul class="lista">
+          <li>
+            facendo scorrere la rotella è possibile allontanare o avvicinare la camera
+          </li>
+          <li>
+            cliccando sulla scena e muovendo il mouse si può gestire liberamente l'inquadratura
+          </li>
+        </ul>
+        <div id="bottoni">
+          <button><a href="../doc/documentazione.html">Documentazione</a></button>
+        </div>
+      </div>
+      <div class="column side">
+        <h2 id="intestazione">Informazioni</h2>
+        <p>Davide Talevi 0001043409 <br> Computer Graphics UniBo LM informatica curriculum C a.a. 2022/2023</p>
+      </div>
+    </div>
+
+</div>
+</body>
+
+<script src="initCanva.js"></script>
+
+<script type="text/javascript" src="resources/libraries/m4.js"></script>
+<script type="text/javascript" src="resources/libraries/glm_utils.js"></script>
+<script type="text/javascript" src="resources/libraries/webgl-lessons-ui.js"></script>
+<script type="text/javascript" src="resources/libraries/dat.gui.js"></script>
+<script type="text/javascript" src="resources/libraries/webgl-utils.js"></script>
+
+<script src="cordinateGen.js"></script>
+<script src="shaders.js"></script>
+<script src="BikeMovement.js"></script>
+<script src="biketils.js"></script>
+<script src="Geometries.js"></script>
+<script src="eventsHandlers.js"></script>
+<script src="drawer.js"></script>
+<script src="main.js"></script>
+
+
+<script>
+
+
+</script>
+
+</html>

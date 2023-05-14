@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentazione</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html">
+    <h1 id="descrizione-dellapplicazione-e-suo-utilizzo">Descrizione dell’applicazione e suo utilizzo</h1>
+  <p>In fondo cosa è importante nella vita, si corre sempre dietro a qualcosa, chi dietro ai follower chi dietro ai soldi,
+     ma alla fine tutto finisce, quindi meglio godersi il viaggio.<br>
+  Ho subito un grave incidente stradale, io in sella alla mia bellissima Ducati e un trattore delle camapane, che mi ha costato parecchio tempo in ospedale. 
+  Ero caduto in depressione, ma con la determinazione di riprendere in mano la mia vita ho deciso nonostante i problemi di creare questo gioco dove 
+  ricreando un'ambientazione simile all'accaduto ho voluto promuovere promuovere la corsa alla vita,
+   continuare nonostante tutto ad inseguire i propri sogni, e di miei sono i viaggi</p>
+  <p>
+    Aiuta il centauro a collezzionare le sue tappe raccogliendo le brouchure dei paesi da visitare prima che il trattore lo prenda!
+    <br>PS: occhio alla polizia e ai trattori parcheggiati male, mi raccomando!!
+  </p>
+<h1 id="spiegazione-delle-scelte-effettuate-e-funzionalità-di-webgl-utilizzate">Spiegazione delle scelte effettuate e funzionalità di WebGl utilizzate</h1>
+<p>Per la realizzazione della scena, sono state utilizzate diverse tecniche.</p>
+<h2>Oggetti 3D</h2>
+<p>È stata creata una rappresentazione del mondo infinito all'interno di una skybox, utilizzando un cubo al quale sono state applicate texture e una prospettiva realistica.
+L'ambiente è stato reso vivido attraverso l'inserimento di un piano che rappresenta il mondo.
+Il piano e la mappa hanno le stesse dimensioni, infatti, quando si esce dal piano, compare la schermata di "game over" che consente al giocatore di riprovare premendo il pulsante "retry".
+La scena è costituita da diverse Mesh, importate da file separati nel formato Wavefront OBJ.
+La Mesh della moto(Ducati Panigale V4s), ottenuta da free3d.com, era molto complessa, quindi è stata ridotta in termini di poligoni utilizzando il software Blender, per renderla adatta all'applicazione.
+Il secondo oggetto è un cartello, creato con Blender, al quale è stata applicata una texture(la mia foto) per renderlo visibile e distinguibile dal resto della scena, e identifica il luogo del creatore.
+Successivamente abbiamo due oggetti ripetuti, il trattore e l'auto della polizia, che sono i nemici del gioco. Sono stati scaricati da turbosquid.com e poi modificati su Blender in quanto
+ erano composti da parecchi elementi e per alleggerire le texture sono stati uniti i diversi elementi che li componevano.
+ <p>Per importare le mesh nella scena viene utilizzata la funzione <i>loadObj</i> presente nel file <i>utils.</i></p>
+</p>
+<img src="img/sc2.png">
+<p>Come texture per il trattore ho inserito dei cipressi, gli stessi che hanno impedito al trattore di vedere il mio arrivo.</p>
+<h2>Luci e Ombre</h2>
+<p>Ho cercato di riprodurre una luce il più simile possibile a quella naturale posizionando una sorgente luminosa sopra la scena. Questa luce ha una direzione specifica e fa uso di una texture di profondità, sfruttando le coordinate di profondità per determinare gli oggetti che si trovano in ombra e da quale lato.
+L'utente ha la possibilità di regolare la posizione della sorgente luminosa lungo i suoi assi.
+Ho introdotto un parametro di correzione, chiamato "shadow acne", per limitare l'effetto di pixelizzazione delle ombre.
+Inoltre, l'utente ha la possibilità di scegliere di non renderizzare le ombre, in modo da ridurre il carico di lavoro del sistema nel caso in cui si desideri eseguire il gioco su computer meno potenti.
+Un problema associato alla scelta di illuminare la scena attraverso questa tecnica risiede nella leggera pixelizzazione delle ombre, nonostante l'utilizzo di un parametro di correzione molto basso. Ciò è dovuto al ridotto numero di poligoni degli oggetti, che risultano meno levigati quando le ombre sono attive.
+Per migliorare l'aspetto visivo, si potrebbe aumentare il numero di poligoni degli oggetti o, come alternativa, implementare un algoritmo di shading efficiente in grado di affinare la forma delle ombre.
+</p>
+<h2>Movimento e Collisioni</h2>
+<p>Il movimento della moto all’interno della scena è stato gestito partendo dal file cg-car2.js visto durante il corso.</p>
+<p>La fisica utilizzata per il movimento è una versione semplificata della funzione di animazione della macchina, senza dover però gestire le ruote.</p>
+<p>Il movimento all’interno della mappa è caratterizzato da alcune collisioni.</p>
+<p>Utilizzando la posizione del personaggio che si sta controllando si può determinare se si è entrati in collisione con il nemico che ci insegue o meno o con gli ostacoli che si possono incontrare.</p>
+<p>La posizione del personaggio giocabile è stata inoltre sfruttata per creare l’algoritmo di inseguimento usato dal nemico, che controllando la posizione della moto sugli assi x e z, aggiorna la sua direzione sugli assi, andando a modificare la posizione del nemico ad ogni frame.</p>
+<p>Sono state implementi due tipi collissioni:</p>
+<ul>
+</ul><li>collisione con il nemico</li>
+<li>collisione con le brouchure</li>
+<li>collisione con gli ostacoli (polizia e trattori)</li>
+
+<p>Quando il trattore ti prende o collidi con un ostacolo, il gioco va in uno stato di game over, e tramite lo spawn dell’apposita schermata è possibile riniziare la partita.</p>
+<img src="img/sc3.png">
+<p>La collisione con le brouchure invece, porta allo scomparire di questi ultimi. Una volta raccolti tutti, tramite degli appositi controlli, si determina la vittoria del giocatore. Anche in questo caso viene mostrata a schermo una vista che comunica al giocatore il suo successo e viene data la possibilità  a questo di ricominciare.</p>
+<img src="img/sc4.png">
+<p>Le brouchure nella scena ruotano attorno all’asse y e all’asse x con una funzione fornita dalla libreria “m4.js”:<br>
+“m4.yRotate(m, angleInRadians, dst)”<br>
+“m4.xRotate(m, angleInRadians, dst)”</p>
+<h2>Interazione con l'interfaccia</h2>
+<p>Si distinguono due tipi di interazioni:</p>
+<ul>
+	<li>Interazione di gioco</li>
+	<li>Interazione con il menu</li>
+</ul>
+<p>Le interazioni di gioco sono possibili</p>
+<ul>
+	<li>Attraverso la tastiera</li>
+	<li>Attraverso il mouse</li>
+	<li>Attraverso il touchscreen (nel caso mobile)</li>
+</ul>
+<h3>Desktop</h3>
+<img src="img/sc1.png">
+<p>Eseguendo il programma su computer, per muovere la moto è necessario utilizzare i tasti W,A,S,D (convenzione generale utilizzata nei giochi che sfruttano mouse e tastiera come fonte di input)</p>
+<p>La camera può essere gestita tramite frecce direzionali e tramite il mouse. Usando inoltre la rotella del mouse si può allontanare o avvicinare la camera al personaggio.</p>
+<p>L’interfaccia presenta un pannello sulla destra con vari bottoni e sliders. Questi permettono di posizionare la camera in tre modalità distinte:<br>
+- Posteriore<br>
+- Frontale<br>
+- Isometrica</p>
+
+<img src="img/sc5.png">
+<p>Gli slider forniscono la possibilità (come già detto in precedenza) di spostare la sorgente della luce sugli assi x, z e y.<br>
+Ovviamente, l’uso di questa funzione risulta più di impatto con le ombre abilitate. È infatti possibile selezionare se visualizzare o meno.</p>
+<h3>Versione Mobile</h3>
+<img src="img/sc6.png">
+<p>Per permettere all’utente di usare l’applicazione anche da smartphone, sono stati inseriti sulla scena delle immagini (prese da google immagini) rappresentanti il layout dei tasti “WASD”  e “arrowUp, arrowLeft, arrowDown, arrowRight” sulla tastiera.</p>
+<p>Sono stati poi posizionati sul canvas rispettivamente sulla sinistra e sulla destra, pensando a simulare un controller, dove con il pollice destro muoviamo il personaggio e con il sinistro gestiamo la camera.</p>
+<h1 id="particolarità-e-sviluppi-futuri">Particolarità e Sviluppi futuri</h1>
+<p>La particolarità del software risiede nella meccanica di inseguimento proposta. Infatti il gioco risulta ben bilanciato con la velocità del nemico rispetto alla propria, ritrovandosi in più occasioni a ritrovarsi con la strada tagliata dal nemico, risultando in un game over. Inoltre le pattuglie e i trattori parcheggiati confondono il giocatore e allo stesso tempo lo mettono in difficolta nello schivarli.</p>
+<p>La posizione delle pattuglie, trattori e brouchure, così come lo spawn del nemico vengono generati casualmente ad ogni inizio della partita.</p>
+<p>Per migliorare il software in futuro si potrebbero implementare le seguenti feature:</p>
+<ul>
+<li>Implementare una funzione di pattuglia per le macchine della polizia</li>
+<li>una animazione per la moto in modo da rendere il suo movimento più fluido quando curva.</li>
+<li>Inserire l'animazione del movimento delle ruote della moto.</li>
+</ul>
+</div>
+</body>
+
+</html>

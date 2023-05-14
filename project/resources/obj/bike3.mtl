@@ -1,0 +1,82 @@
+# Blender 3.3.1 MTL File: 'bike3.blend'
+# www.blender.org
+
+newmtl CAUCHOS
+Ns 102.228821
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/caucho.png
+map_d /Users/davidetalevi/Downloads/caucho.png
+
+newmtl Material.002
+Ns 551.765808
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/hierro.jpg
+
+newmtl Material.013
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl faro
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/faro.jpg
+
+newmtl hierro
+Ns 524.165833
+Ka 1.000000 1.000000 1.000000
+Ks 0.551282 0.551282 0.551282
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/hierro.jpg
+
+newmtl pantalla_y_volante_
+Ns 224.276321
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/delantera.png
+map_d /Users/davidetalevi/Downloads/delantera.png
+
+newmtl pintura_de_ducati_3
+Ns 875.903931
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/pintura_(3).png
+
+newmtl plastico
+Ns 350.036530
+Ka 0.601672 0.601672 0.601672
+Ks 0.692308 0.692308 0.692308
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd /Users/davidetalevi/Downloads/plastico.png
+map_d /Users/davidetalevi/Downloads/plastico.png
